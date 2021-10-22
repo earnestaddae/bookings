@@ -1,7 +1,22 @@
-## Airbnb clone built with Go
+## Room Booking Application
 
-This is the repo for an Airbnb clone for bookings and reservations
+Visit [Website](https://li1450-170.members.linode.com/)
 
+### This application allows users
+
+- Search room by datea
+- Make reservation
+
+### The Admin of the app
+
+- Can see all reservations
+- Process reservations
+- Approved reservation
+- Block rooms for renovation
+
+### The URL to the app
+
+- Styled with [Bootstrap 5](https://getbootstrap.com/)
 - Built in Go version [1.17](https://golang.org/dl/)
 - Uses the [chi router](https://github.com/go-chi/chi/v5)
 - Uses [alex edwards SCS](https://github.com/alexedwards/scs/v2) Session Manager
@@ -16,3 +31,4 @@ This is the repo for an Airbnb clone for bookings and reservations
 - Admin dashboard template is [RoyalUI](https://github.com/BootstrapDash/RoyalUI-Free-Bootstrap-Admin-Template)
 - [Simple Tables](https://github.com/fiduswriter/Simple-DataTables)
 - Simple database migration by [Soda](https://gobuffalo.io/en/docs/db/toolbox/)
+- Hosted on [Linode](https://www.linode.com/)
