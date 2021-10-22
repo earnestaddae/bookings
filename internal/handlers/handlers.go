@@ -151,7 +151,7 @@ func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
 		StartDate: startDate,
 		EndDate:   endDate,
 		RoomID:    roomID,
-		Room:      room, // add this to fix invalid data error
+		Room:      room,
 	}
 
 	form := forms.New(r.PostForm)
