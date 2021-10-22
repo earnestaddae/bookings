@@ -29,7 +29,7 @@ func Add(a, b int) int {
 	return a + b
 }
 
-// Iterate returns a slice of ints starting at 1 to count
+// Iterate returns a slice of ints, starting at 1, going to count
 func Iterate(count int) []int {
 	var i int
 	var items []int
@@ -44,7 +44,7 @@ func NewRenderer(a *config.AppConfig) {
 	app = a
 }
 
-// HumanDate returns time in YYYY-MM-DD
+// HumanDate returns time in YYYY-MM-DD format
 func HumanDate(t time.Time) string {
 	return t.Format("2006-01-02")
 }
