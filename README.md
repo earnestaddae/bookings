@@ -1,11 +1,14 @@
 ## Room Booking Application
 
+This application provided the basics of building web application with Go via CRUD, Database queries and the use of Session.
+
 Visit [Website](https://li1450-170.members.linode.com/)
 
 ### This application allows users
 
-- Search room by datea
+- Search room by dates
 - Make reservation
+- Sends an email to the guest for making a reservation
 
 ### The Admin of the app
 
@@ -13,6 +16,7 @@ Visit [Website](https://li1450-170.members.linode.com/)
 - Process reservations
 - Approved reservation
 - Block rooms for renovation
+- Receives an email when a reservation is made
 
 ### The URL to the app
 
