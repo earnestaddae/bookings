@@ -51,4 +51,59 @@
 - Type `esc` and `:wq` to save `.profile`
 - Logout and reconnect to server with your credentials
 - Ensure you have git installed on your server -- mostly yes, but check with `which git`
-- Run `git clone [app repo]`
+- Run `git clone [app repo]` NB: ensure you are cloning with **HTTPS** and not SSH
+
+### Now you have app cloned, connect to your database
+
+- cd in `/etc/postgresql/[version]/main`
+- Open and make changes to `pg_hba.conf` with `sudo vi pg_hba.conf`
+- Go to `host all all 127.0.0.1/32 md5` under the comment **# IPv4 local connections:** and change md5 to `trust`
+- Go to `host all all ::1/128 trust` under the comment **# IPv6 local connections:** and change md5 to `trust`
+- Type `:wq` to save the file `pg_hba.conf`
+- Stop postgres with `sudo service postgresql stop` and restart with `sudo service postgresql start`
+- Make sure it is running with `ps ax | grep postgr`
+
+---
+
+#### Connection remote db to local
+
+- Go the database GUI you are using, mine DBeaver
+- Click on `New Database Connection` and select `PostgreSQL`
+- Click on `SSH` and check `Use SSH Tunnel`
+- Under `settings` type your **linode server IP address** provided in th **Host/IP** field
+- Enter the credentials used to create the ssh account earlier for the new user
+- Make sure, you are logout of your remote server, navigate to `Main` and click on `Test Connection`
+- Once the database connection is successful click finish
+- You should see your new postgres with your linode server IP address
+- Create a new database name under your new postgres - linode IP Address
+- Log back in to your remote server in your terminal with `ssh username@linodeprovidedIPAddress`
+- Type `cp database.yml.example database.yml`, and make changes with your db credentials with username being `postgres`
+
+---
+
+#### Generate migration by installing dependencies
+
+- Install pop for db migration as used in project with `go get github.com/gobuffalo/pop/...` to ensure soda is available
+- `ls ~/go/bin` should yield `soda`
+- In your home directory run `vi .profile`, add `export PATH=$PATH:~/go/bin`, save and export it in your terminal to add `soda` to path
+- cd `app cloned earlier` directory
+- Run `soda migrate` to migrate your database
+- You should have all your tables migrated to linode server db
+- Still in your `cloned app` build the app with `go build -o [appName] cmd/web/*.go` to create executable file
+- ALL SET!
+
+### Connect application to web server
+
+- Visit http://[linodeprovidedIPAddress] to see app
+- Go your terminal and login to your remote server with `ssh username@linodeprovidedIPAddress`
+- `cd /etc/caddy/` to find `Caddyfile`
+- `sudo mv Caddyfile Caddyfile.dist`
+- Create your own caddyfile with `sudo vi Caddyfile`, stick to name **Caddyfile**
+- In your Caddyfile, add the configurations from _caddfile.md_
+- Create `conf.d` directory, cd into it and `book.conf` file and add import `static` and `security` from _caddfile.md_
+- Create in `/var/www/book/logs/caddy-access.log`
+- `mv ~/bookings book`
+- `sudo chmod 777 logs`
+- Restart caddy `sudo service caddy restart`
+- Caddy status `sudo service caddy status`
+- from `/var/www/book` run `./bookings -dbname=database -dbpass=password -dbuser=dbuser`
