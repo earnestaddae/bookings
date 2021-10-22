@@ -107,3 +107,13 @@
 - Restart caddy `sudo service caddy restart`
 - Caddy status `sudo service caddy status`
 - from `/var/www/book` run `./bookings -dbname=database -dbpass=password -dbuser=dbuser`
+
+### Supervior takes over
+
+- cd etc/supervisor
+- cd conf.d
+- create book.conf file
+- add the configuration in after --- in `book.conf` and save
+- run `sudo supervisorctl`
+- run `status`
+- run `update`
