@@ -18,7 +18,7 @@ Visit [Website](https://li1450-170.members.linode.com/)
 - Block rooms for renovation
 - Receives an email when a reservation is made
 
-### The URL to the app
+### Tech stack used
 
 - Styled with [Bootstrap 5](https://getbootstrap.com/)
 - Built in Go version [1.17](https://golang.org/dl/)
