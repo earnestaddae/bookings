@@ -37,3 +37,7 @@ Visit [Website](https://li1450-170.members.linode.com/)
 - Simple database migration by [Soda](https://gobuffalo.io/en/docs/db/toolbox/)
 - Hosted on [Linode](https://www.linode.com/)
 - Server used is [Caddy](https://caddyserver.com/)
+
+### Project Search page
+
+![Bookings](https://github.com/earnestaddae/bookings/blob/main/bookings.png)
